@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 interface FlatItemProps {
   slug: string;
   thumbnail: string;
+  price: string;
 }
 
-const FlatItem = ({ slug, thumbnail }: FlatItemProps) => {
+const FlatItem = ({ slug, thumbnail, price }: FlatItemProps) => {
   return (
     <div className="text-center col-lg-4 col-12 col-md-6 ">
       <div className="item">
@@ -15,7 +16,7 @@ const FlatItem = ({ slug, thumbnail }: FlatItemProps) => {
         <div className="item-description">
           <div className="d-flex justify-content-between mb-3">
             <span className="item-title">San Francisco, CA 94103</span>
-            <span className="item-price">$1000</span>
+            <span className="item-price">{`$${price}`}</span>
           </div>
           <div className="item-icon d-flex alig-items-center justify-content-between">
             <div>

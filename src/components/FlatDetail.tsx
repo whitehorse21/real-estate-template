@@ -1,21 +1,25 @@
 import React from "react";
 import ImageGallery from "react-image-gallery";
+import { homes } from "../utils/homes";
+import { useParams } from "react-router-dom";
 
 const FlatDetail = () => {
-  const images = [
-    {
-      original: "/img/product1.jpeg",
-      thumbnail: "/img/product1.jpeg",
-    },
-    {
-      original: "/img/banner.jpg",
-      thumbnail: "/img/banner.jpg",
-    },
-    {
-      original: "/img/product1.jpeg",
-      thumbnail: "/img/product1.jpeg",
-    },
-  ];
+  const params = useParams<{ slug: string }>();
+  const selHome = homes.filter((item) => item.link === params.slug)[0];
+  if (!selHome) {
+    return <div>Not Found</div>;
+  }
+
+  const recentlyHomes = homes.filter(
+    (item) => !selHome.gallery.includes(item.thumbnail)
+  );
+
+  const images = selHome.gallery.map((item) => {
+    return {
+      original: item,
+      thumbnail: item,
+    };
+  });
 
   return (
     <div className="flat-detail">
@@ -24,7 +28,7 @@ const FlatDetail = () => {
           <div className="row">
             <div className="col-lg-12">
               <h1 className="page-title">DETAIL</h1>
-              <h2 className="page-description">Lorem ipsum dolor sit amet</h2>
+              <h2 className="page-description">{selHome.title}</h2>
             </div>
           </div>
         </div>
@@ -34,17 +38,15 @@ const FlatDetail = () => {
           <div className="col-lg-12">
             <div className="fd-top flat-detail-content">
               <div>
-                <h3 className="flat-detail-title">
-                  Lorem ipsum dolor sit amet.
-                </h3>
+                <h3 className="flat-detail-title">{selHome.title}</h3>
                 <p className="fd-address">
                   {" "}
                   <i className="fas fa-map-marker-alt"></i>
-                  Lorem ipsum dolor sit amet
+                  {selHome.location}
                 </p>
               </div>
               <div>
-                <span className="fd-price">$650</span>
+                <span className="fd-price">{`$${selHome.price}`}</span>
               </div>
             </div>
             <ImageGallery
@@ -59,16 +61,7 @@ const FlatDetail = () => {
               <div className="col-lg-8">
                 <div className="fd-item">
                   <h4>Description</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum
-                  </p>
+                  <p>{selHome.description}</p>
                 </div>
                 <div className="fd-item fd-property-detail">
                   <h4>Property Details</h4>
@@ -82,88 +75,78 @@ const FlatDetail = () => {
                       <span>5</span>
                     </div>
                     <div className="col-lg-4">
-                      <span>Kitchen: </span>
-                      <span>1</span>
+                      <span>Parking: </span>
+                      <span>Available</span>
                     </div>
                   </div>
                   <div className="row">
                     <div className="col-lg-4">
-                      <span>Kitchen: </span>
-                      <span>1</span>
+                      <span>Pet: </span>
+                      <span>Available</span>
                     </div>
                     <div className="col-lg-4">
-                      <span>All Rooms: </span>
-                      <span>5</span>
+                      <span>Outdoor: </span>
+                      <span>No Info</span>
                     </div>
                     <div className="col-lg-4">
-                      <span>Kitchen: </span>
-                      <span>1</span>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-4">
-                      <span>Kitchen: </span>
-                      <span>1</span>
-                    </div>
-                    <div className="col-lg-4">
-                      <span>All Rooms: </span>
-                      <span>5</span>
-                    </div>
-                    <div className="col-lg-4">
-                      <span>Kitchen: </span>
-                      <span>1</span>
+                      <span>A/C: </span>
+                      <span>Heating & Cooling</span>
                     </div>
                   </div>
                 </div>
                 <div className="fd-item fd-features">
                   <h4>Features</h4>
                   <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-12">
                       <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
-                    </div>
-                    <div className="col-lg-4">
-                      <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
-                    </div>
-                    <div className="col-lg-4">
-                      <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
+                      <span>
+                        On-site reception, management and security service
+                      </span>
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-12">
                       <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
-                    </div>
-                    <div className="col-lg-4">
-                      <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
-                    </div>
-                    <div className="col-lg-4">
-                      <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
+                      <span>Printing services</span>
                     </div>
                   </div>
                   <div className="row">
-                    <div className="col-lg-4">
+                    <div className="col-lg-12">
                       <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
+                      <span>Vending machine</span>
                     </div>
-                    <div className="col-lg-4">
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-12">
                       <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
+                      <span>Free bicycle storage</span>
                     </div>
-                    <div className="col-lg-4">
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-12">
                       <i className="fa fa-check"></i>
-                      <span>Lorem Ipsum</span>
+                      <span>WIFI throughout building</span>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <i className="fa fa-check"></i>
+                      <span>Residents recreational facilities</span>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <i className="fa fa-check"></i>
+                      <span>
+                        Large lounge with large screen TV, sofas and chairs
+                      </span>
                     </div>
                   </div>
                 </div>
                 <div className="fd-item">
                   <h4>Maps</h4>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15105200.564429!2d37.91245092855647!3d38.99130948591772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b0155c964f2671%3A0x40d9dbd42a625f2a!2zVMO8cmtpeWU!5e0!3m2!1str!2str!4v1630158674074!5m2!1str!2str"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107268.41084880604!2d-96.87956377649768!3d32.841601899197734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c19f77b45974b%3A0xb9ec9ba4f647678f!2sDallas%2C%20TX%2C%20USA!5e0!3m2!1sen!2sru!4v1694161378995!5m2!1sen!2sru"
                     width="100%"
                     height="450"
                     loading="lazy"
@@ -173,43 +156,12 @@ const FlatDetail = () => {
               <div className="col-lg-4">
                 <div className="fd-sidebar-item">
                   <h4>Recently Added</h4>
-                  <div className="recently-item">
-                    <img src="/img/product1.jpeg" alt="detail" width="50px" />
-                    <span>Lorem Ipsum Dolor</span>
-                  </div>
-                  <div className="recently-item">
-                    <img src="/img/product1.jpeg" alt="detail" width="50px" />
-                    <span>Lorem Ipsum Dolor</span>
-                  </div>
-                  <div className="recently-item">
-                    <img src="/img/product1.jpeg" alt="detail" width="50px" />
-                    <span>Lorem Ipsum Dolor</span>
-                  </div>
-                </div>
-                <div className="fd-sidebar-item">
-                  <h4>Category</h4>
-                  <ul className="category-ul">
-                    <li>Category 1</li>
-                    <li>Category 2</li>
-                    <li>Category 3</li>
-                    <li>Category 4</li>
-                    <li>Category 5</li>
-                  </ul>
-                </div>
-                <div className="fd-sidebar-item">
-                  <h4>Recently Added</h4>
-                  <div className="recently-item">
-                    <img src="/img/product1.jpeg" alt="detail" width="50px" />
-                    <span>Lorem Ipsum Dolor</span>
-                  </div>
-                  <div className="recently-item">
-                    <img src="/img/product1.jpeg" alt="detail" width="50px" />
-                    <span>Lorem Ipsum Dolor</span>
-                  </div>
-                  <div className="recently-item">
-                    <img src="/img/product1.jpeg" alt="detail" width="50px" />
-                    <span>Lorem Ipsum Dolor</span>
-                  </div>
+                  {recentlyHomes.map((item) => (
+                    <div className="recently-item">
+                      <img src={item.thumbnail} alt="detail" width="50px" />
+                      <span>{item.title}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

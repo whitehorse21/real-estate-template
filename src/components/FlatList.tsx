@@ -1,5 +1,6 @@
 import Title from "./Title";
 import FlatItem from "./FlatItem";
+import { homes } from "../utils/homes";
 
 const FlatList = () => {
   const title = {
@@ -11,12 +12,13 @@ const FlatList = () => {
       <div className="container">
         <Title title={title.text} description={title.description} />
         <div className="row">
-          <FlatItem slug="lorem-ipsum-1" thumbnail="/img/house1.png" />
-          <FlatItem slug="lorem-ipsum-2" thumbnail="/img/house2.png" />
-          <FlatItem slug="lorem-ipsum-3" thumbnail="/img/house3.png" />
-          <FlatItem slug="lorem-ipsum-4" thumbnail="/img/house4.png" />
-          <FlatItem slug="lorem-ipsum-5" thumbnail="/img/house5.png" />
-          <FlatItem slug="lorem-ipsum-6" thumbnail="/img/house6.png" />
+          {homes.map((item) => (
+            <FlatItem
+              slug={item.link}
+              thumbnail={item.thumbnail}
+              price={item.price}
+            />
+          ))}
         </div>
       </div>
     </section>

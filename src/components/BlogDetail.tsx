@@ -8,7 +8,6 @@ interface BlogDetailProps {
 const BlogDetail = () => {
   const params = useParams<{ slug: string }>();
   const selBlog = blogs.filter((item) => item.link === params.slug)[0];
-  console.log("@@@@@@@@@@ - ", selBlog);
 
   return (
     <div className="container mt-4 mb-4">
