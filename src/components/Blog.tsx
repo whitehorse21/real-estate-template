@@ -1,4 +1,5 @@
 import BlogItem from "./BlogItem";
+import { blogs } from "../utils/blogs";
 
 const Blog = () => {
   return (
@@ -7,7 +8,7 @@ const Blog = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1 className="page-title">Blog</h1>
+              <h1 className="page-title">Green World Real Estate</h1>
               <h2 className="page-description">Blog</h2>
             </div>
           </div>
@@ -16,42 +17,16 @@ const Blog = () => {
       <div className="page-content">
         <div className="container">
           <div className="row">
-            <BlogItem
-              link="blog-1"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-2"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-3"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-4"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-5"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-6"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-7"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-8"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
-            <BlogItem
-              link="blog-9"
-              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            />
+            {blogs.map((item) => (
+              <BlogItem
+                link={item.link}
+                title={item.title}
+                thumbnail={item.thumbnail}
+                description={item.description}
+                date={item.date}
+                commentAmount={item.commentAmount}
+              />
+            ))}
           </div>
         </div>
       </div>

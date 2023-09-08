@@ -20,21 +20,21 @@ const Contact = () => {
                   <div className="contact-item">
                     <i className="fas fa-envelope"></i>
                     <h5>Mail</h5>
-                    <h6>info@info.com</h6>
+                    <h6>whitehorse9021@gmail.com</h6>
                   </div>
                 </div>
                 <div className="col-lg-4">
                   <div className="contact-item">
                     <i className="fas fa-map-marker-alt"></i>
                     <h5>Address</h5>
-                    <h6>Lorem Ipsum</h6>
+                    <h6>Dallas, TX, USA</h6>
                   </div>
                 </div>
                 <div className="col-lg-4">
                   <div className="contact-item">
                     <i className="fas fa-phone-alt"></i>
                     <h5>Phone</h5>
-                    <h6>00000000000</h6>
+                    <h6>+1(234)-567-9012</h6>
                   </div>
                 </div>
               </div>

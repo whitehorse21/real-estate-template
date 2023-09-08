@@ -19,7 +19,7 @@ function App() {
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/blog/:id" element={<BlogDetail />}></Route>
+          <Route path="/blog/:slug" element={<BlogDetail />}></Route>
           <Route path="/flat/:slug" element={<FlatDetail />}></Route>
         </Routes>
         <Footer />

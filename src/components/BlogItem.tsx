@@ -1,16 +1,27 @@
 import { Link } from "react-router-dom";
 
 interface BlogItemProps {
+  thumbnail: string;
   title: string;
+  description: string;
   link: string;
+  date: string;
+  commentAmount: number;
 }
 
-const BlogItem = ({ title, link }: BlogItemProps) => {
+const BlogItem = ({
+  title,
+  link,
+  thumbnail,
+  description,
+  date,
+  commentAmount,
+}: BlogItemProps) => {
   return (
     <div className="col-lg-4">
       <div className="blog-item">
         <div className="blog-img">
-          <img src="/img/product1.jpeg" alt="product" className="w-100" />
+          <img src={thumbnail} alt="product" className="w-100 h-100" />
         </div>
         <div className="blog-content">
           <h2 className="blog-title">
@@ -19,18 +30,14 @@ const BlogItem = ({ title, link }: BlogItemProps) => {
           <div className="blog-info">
             <div className="blog-info-item">
               <i className="far fa-calendar-alt "></i>
-              <span>20.03.2023</span>
+              <span>{date}</span>
             </div>
             <div className="blog-info-item">
               <i className="far fa-comments"></i>
-              <span>0 Comments</span>
+              <span>{`${commentAmount} Comments`}</span>
             </div>
           </div>
-          <div className="blog-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam
-          </div>
+          <div className="blog-text">{description}</div>
         </div>
       </div>
     </div>
